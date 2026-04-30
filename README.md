@@ -352,7 +352,9 @@ All the function calls from all the services will return a `TwilioResponse` Obje
 ## Useful articles
 
 - [https://www.dhiwise.com/post/twilio-flutter-sdk-for-beginners-enhance-flutter-development](https://www.dhiwise.com/post/twilio-flutter-sdk-for-beginners-enhance-flutter-development)
-- [https://levelup.gitconnected.com/twilio-text-messages-with-flutter-fe63f41eebe9https://community.flutterflow.io/c/community-custom-widgets/post/send-an-sms-with-twilio-4ihPgc6fW0FwWtC](https://levelup.gitconnected.com/twilio-text-messages-with-flutter-fe63f41eebe9https://community.flutterflow.io/c/community-custom-widgets/post/send-an-sms-with-twilio-4ihPgc6fW0FwWtC)
+- [https://medium.com/@hpatilabhi10/simple-starter-guide-to-sms-using-twilio-in-flutter-f2efeffa6c17](https://medium.com/@hpatilabhi10/simple-starter-guide-to-sms-using-twilio-in-flutter-f2efeffa6c17)
+- [https://cswithiyush.hashnode.dev/how-to-integrate-twilio-sms-with-flutter-beginners-guide-to-twilio-and-flutter](https://cswithiyush.hashnode.dev/how-to-integrate-twilio-sms-with-flutter-beginners-guide-to-twilio-and-flutter)
+- [https://levelup.gitconnected.com/twilio-text-messages-with-flutter-fe63f41eebe9](https://levelup.gitconnected.com/twilio-text-messages-with-flutter-fe63f41eebe9)
 
 ## Issues
 
