@@ -134,7 +134,7 @@ template : TwilioWhatsAppTemplate(contentSid: "id", contentVariables: {"var1":"v
 | parameter   | type   | mandatory     | remarks                                                                                     |
 | ----------- | ------ | --------------| ------------------------------------------------------------------------------------------- |
 | toNumber    | String | Yes           | The number to which the message has to sent to, should be a mobile number with country code |
-| template    | TwilioWhatsAppTemplate | No        | The template of your message          |
+| template    | TwilioWhatsAppTemplate | Yes        | The template of your message          |
 
 
 ### Twilio Verification
