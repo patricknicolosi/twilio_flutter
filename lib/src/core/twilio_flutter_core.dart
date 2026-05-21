@@ -115,6 +115,8 @@ class TwilioFlutter {
         twilioCreds: _twilioCreds);
   }
 
+  ///	sendWhatsAppTemplate
+  ///	 [template] : The [TwilioWhatsAppTemplate] object containing all details for the template message to be sent.
   Future<TwilioResponse> sendWhatsAppTemplate(
       {required String toNumber,
       required TwilioWhatsAppTemplate template}) async {
