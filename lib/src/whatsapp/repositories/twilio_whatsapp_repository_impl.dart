@@ -27,7 +27,6 @@ class TwilioWhatsAppRepositoryImpl extends TwilioWhatsAppRepository {
       {required String toNumber,
       required String messageBody,
       required TwilioCreds twilioCreds,
-      TwilioWhatsAppTemplate? template,
       String? mediaUrl,
       String? fromNumber}) async {
     final headers =
@@ -41,13 +40,32 @@ class TwilioWhatsAppRepositoryImpl extends TwilioWhatsAppRepository {
     if (mediaUrl != null) {
       body['MediaUrl'] = mediaUrl;
     }
-    if (template != null) {
-      body['ContentSid'] = template.contentSid;
-      body['ContentVariables'] = jsonEncode(template.contentVariables);
-    }
     final http.Response response = await NetworkHelper.handleNetworkRequest(
         url: url, headers: headers, body: body, requestType: RequestType.POST);
     logger.info("Whatsapp Message Sent to [$toNumber] - [$messageBody]");
+    return handleRequest(response: response, requestType: RequestType.POST);
+  }
+
+  @override
+  Future<TwilioResponse> sendWhatsAppTemplate(
+      {required String toNumber,
+      required TwilioWhatsAppTemplate template,
+      required TwilioCreds twilioCreds,
+      String? fromNumber}) async {
+    final headers =
+        RequestUtils.generateHeaderWithBase64(twilioCreds.authString);
+    final String url = RequestUtils.generateMessagesUrl(twilioCreds.accountSid);
+    final body = {
+      'From': 'whatsapp:' + (fromNumber ?? twilioCreds.twilioNumber),
+      'To': 'whatsapp:' + toNumber,
+      'ContentSid': template.contentSid,
+      'ContentVariabcles': jsonEncode(template.contentVariables),
+    };
+
+    final http.Response response = await NetworkHelper.handleNetworkRequest(
+        url: url, headers: headers, body: body, requestType: RequestType.POST);
+    logger.info(
+        "Whatsapp Message Sent to [$toNumber] with template [$template.contentSid]");
     return handleRequest(response: response, requestType: RequestType.POST);
   }
 
