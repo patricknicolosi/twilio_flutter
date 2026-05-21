@@ -4,8 +4,8 @@ import 'package:http/http.dart' as http;
 import 'package:twilio_flutter/src/shared/dto/twilio_creds.dart';
 import 'package:twilio_flutter/src/shared/dto/twilio_messaging_service_creds.dart';
 import 'package:twilio_flutter/src/shared/dto/twilio_response.dart';
+import 'package:twilio_flutter/src/shared/dto/twilio_whatsapp_template.dart';
 import 'package:twilio_flutter/src/shared/enums/request_type.dart';
-import 'package:twilio_flutter/src/whatsapp/dto/twilio_whatsapp_template.dart';
 import 'package:twilio_flutter/src/whatsapp/repositories/twilio_whatsapp_repository.dart';
 
 import '../../shared/services/network.dart';

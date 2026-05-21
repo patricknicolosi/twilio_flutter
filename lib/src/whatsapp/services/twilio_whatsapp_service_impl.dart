@@ -1,5 +1,6 @@
 import 'package:twilio_flutter/src/shared/dto/twilio_creds.dart';
 import 'package:twilio_flutter/src/shared/dto/twilio_messaging_service_creds.dart';
+import 'package:twilio_flutter/src/shared/dto/twilio_whatsapp_template.dart';
 import 'package:twilio_flutter/src/shared/exceptions/http_exception.dart';
 import 'package:twilio_flutter/src/whatsapp/repositories/twilio_whatsapp_repository.dart';
 import 'package:twilio_flutter/src/whatsapp/services/twilio_whatsapp_service.dart';
@@ -21,23 +22,52 @@ class TwilioWhatsAppServiceImpl extends TwilioWhatsAppService {
   final logger = LogHelper(className: 'TwilioWhatsAppServiceImpl');
 
   @override
-  Future<TwilioResponse> sendWhatsAppMessage(
-      {required String toNumber,
-      required String messageBody,
-      required TwilioCreds twilioCreds}) async {
+  Future<TwilioResponse> sendWhatsAppMessage({
+    required String toNumber,
+    required String messageBody,
+    required TwilioCreds twilioCreds,
+    String? mediaUrl,
+  }) async {
     try {
       logger.info(
           "Whatsapp Message Initiated from [${twilioCreds.twilioNumber}]");
       return await _whatsAppRepository.sendWhatsAppMessage(
-          toNumber: toNumber,
-          messageBody: messageBody,
-          twilioCreds: twilioCreds);
+        toNumber: toNumber,
+        messageBody: messageBody,
+        twilioCreds: twilioCreds,
+        mediaUrl: mediaUrl,
+      );
     } on HttpCallException catch (e) {
       throw TwilioFlutterException(
           message: "Failed to Send Whatsapp message", thrownException: e);
     } on Exception catch (e) {
       throw TwilioFlutterException(
           message: "Unknown Error: Failed to Send Whatsapp message",
+          thrownException: e);
+    }
+  }
+
+  @override
+  Future<TwilioResponse> sendWhatsAppTemplate({
+    required String toNumber,
+    required TwilioWhatsAppTemplate template,
+    required TwilioCreds twilioCreds,
+    String? mediaUrl,
+  }) async {
+    try {
+      logger.info(
+          "Whatsapp Message Initiated from [${twilioCreds.twilioNumber}]");
+      return await _whatsAppRepository.sendWhatsAppTemplate(
+        toNumber: toNumber,
+        template: template,
+        twilioCreds: twilioCreds,
+      );
+    } on HttpCallException catch (e) {
+      throw TwilioFlutterException(
+          message: "Failed to Send Whatsapp template", thrownException: e);
+    } on Exception catch (e) {
+      throw TwilioFlutterException(
+          message: "Unknown Error: Failed to Send Whatsapp template",
           thrownException: e);
     }
   }

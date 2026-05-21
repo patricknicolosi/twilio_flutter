@@ -1,8 +1,8 @@
 import 'package:twilio_flutter/src/shared/dto/twilio_creds.dart';
 import 'package:twilio_flutter/src/shared/dto/twilio_messaging_service_creds.dart';
 import 'package:twilio_flutter/src/shared/dto/twilio_response.dart';
+import 'package:twilio_flutter/src/shared/dto/twilio_whatsapp_template.dart';
 import 'package:twilio_flutter/src/shared/services/network_repository.dart';
-import 'package:twilio_flutter/src/whatsapp/dto/twilio_whatsapp_template.dart';
 
 abstract class TwilioWhatsAppRepository extends NetworkRepository {
   Future<TwilioResponse> sendWhatsAppMessage(

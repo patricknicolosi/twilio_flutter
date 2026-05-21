@@ -2,6 +2,7 @@ library twilio_flutter;
 
 import 'package:twilio_flutter/src/shared/dto/twilio_creds.dart';
 import 'package:twilio_flutter/src/shared/dto/twilio_response.dart';
+import 'package:twilio_flutter/src/shared/dto/twilio_whatsapp_template.dart';
 import 'package:twilio_flutter/src/shared/enums/verification_channel.dart';
 import 'package:twilio_flutter/src/shared/services/service_locator.dart';
 import 'package:twilio_flutter/src/sms/services/twilio_sms_service.dart';
@@ -108,6 +109,13 @@ class TwilioFlutter {
         toNumber: toNumber,
         messageBody: messageBody,
         twilioCreds: _twilioCreds);
+  }
+
+  Future<TwilioResponse> sendWhatsAppTemplate(
+      {required String toNumber,
+      required TwilioWhatsAppTemplate template}) async {
+    return await _whatsAppService.sendWhatsAppTemplate(
+        toNumber: toNumber, template: template, twilioCreds: _twilioCreds);
   }
 
   ///	createVerificationService
