@@ -136,18 +136,6 @@ template : TwilioWhatsAppTemplate(contentSid: "id", contentVariables: {"var1":"v
 | toNumber    | String | Yes           | The number to which the message has to sent to, should be a mobile number with country code |
 | template    | TwilioWhatsAppTemplate | No        | The template of your message          |
 
-```dart
-TwilioResponse response = await twilioFlutter.sendWhatsApp(toNumber : '',// replace with Mobile Number(With country code)
-messageBody : 'hello world', mediaUrl : 'url_to_your_obj.png");
-```
-
-| parameter   | type   | mandatory | remarks                                                                                     |
-| ----------- | ------ | --------- | ------------------------------------------------------------------------------------------- |
-| toNumber    | String | Yes       | The number to which the message has to sent to, should be a mobile number with country code |
-| messageBody | String | Yes       | The body of the message                                                                 |
-| fromNumber  | String | No        | A custom fromNumber other than the one configured with TwilioFlutter object. Should be mobile number with country code.                |
-| mediaUrl    | String | No        | The attachement's url of your message             |
-
 
 ### Twilio Verification
 The following are the Twilio verify related features in **TwilioFlutter**.
