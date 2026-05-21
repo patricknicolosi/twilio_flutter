@@ -103,11 +103,15 @@ class TwilioFlutter {
   ///
   ///	For more status codes refer
   /// * https://www.twilio.com/docs/api/errors
-  Future<TwilioResponse> sendWhatsApp(
-      {required String toNumber, required String messageBody}) async {
+  Future<TwilioResponse> sendWhatsApp({
+    required String toNumber,
+    required String messageBody,
+    String? mediaUrl,
+  }) async {
     return await _whatsAppService.sendWhatsAppMessage(
         toNumber: toNumber,
         messageBody: messageBody,
+        mediaUrl: mediaUrl,
         twilioCreds: _twilioCreds);
   }
 
