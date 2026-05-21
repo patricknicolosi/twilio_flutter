@@ -1,8 +1,11 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 import 'package:twilio_flutter/src/shared/dto/twilio_creds.dart';
 import 'package:twilio_flutter/src/shared/dto/twilio_messaging_service_creds.dart';
 import 'package:twilio_flutter/src/shared/dto/twilio_response.dart';
 import 'package:twilio_flutter/src/shared/enums/request_type.dart';
+import 'package:twilio_flutter/src/whatsapp/dto/twilio_whatsapp_template.dart';
 import 'package:twilio_flutter/src/whatsapp/repositories/twilio_whatsapp_repository.dart';
 
 import '../../shared/services/network.dart';
@@ -24,6 +27,8 @@ class TwilioWhatsAppRepositoryImpl extends TwilioWhatsAppRepository {
       {required String toNumber,
       required String messageBody,
       required TwilioCreds twilioCreds,
+      TwilioWhatsAppTemplate? template,
+      String? mediaUrl,
       String? fromNumber}) async {
     final headers =
         RequestUtils.generateHeaderWithBase64(twilioCreds.authString);
@@ -33,6 +38,13 @@ class TwilioWhatsAppRepositoryImpl extends TwilioWhatsAppRepository {
       'To': 'whatsapp:' + toNumber,
       'Body': messageBody
     };
+    if (mediaUrl != null) {
+      body['MediaUrl'] = mediaUrl;
+    }
+    if (template != null) {
+      body['ContentSid'] = template.contentSid;
+      body['ContentVariables'] = jsonEncode(template.contentVariables);
+    }
     final http.Response response = await NetworkHelper.handleNetworkRequest(
         url: url, headers: headers, body: body, requestType: RequestType.POST);
     logger.info("Whatsapp Message Sent to [$toNumber] - [$messageBody]");
