@@ -59,7 +59,7 @@ class TwilioWhatsAppRepositoryImpl extends TwilioWhatsAppRepository {
       'From': 'whatsapp:' + (fromNumber ?? twilioCreds.twilioNumber),
       'To': 'whatsapp:' + toNumber,
       'ContentSid': template.contentSid,
-      'ContentVariabcles': jsonEncode(template.contentVariables),
+      'ContentVariables': jsonEncode(template.contentVariables),
     };
 
     final http.Response response = await NetworkHelper.handleNetworkRequest(
