@@ -5,4 +5,9 @@ class TwilioWhatsAppTemplate {
   final Map<String, dynamic>? contentVariables;
 
   TwilioWhatsAppTemplate({required this.contentSid, this.contentVariables});
+
+  @override
+  String toString() {
+    return 'TwilioWhatsAppTemplate{contentSid: $contentSid, contentVariables: $contentVariables}';
+  }
 }
